@@ -3,9 +3,10 @@ import mongoose from 'mongoose'
 let isConnected=false;
 
 export const connectToDB=async()=>{
-	mongoose.set('strictQuery',true)
+	// mongoose.set('strictQuery',true)
 
-	if(isConncted){
+	console.log(process.env.MONGODB_URI);
+	if(isConnected){
 		console.log('DB Connection Established');
 		return;
 	}
@@ -17,7 +18,7 @@ export const connectToDB=async()=>{
 			useUnifiedTopology:true,
 		})
 
-		isConncted=true;
+		isConnected=true;
 		console.log("MongoDB Connected");
 	}catch(err){
 		console.log(err);

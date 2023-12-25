@@ -122,11 +122,14 @@ body {
 .black_btn {
   @apply w-fit rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm  flex items-center justify-center;
 }
+.black_btn_square {
+  @apply w-fit rounded-sm max-md:w-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm  flex items-center justify-center;
+}
 .primary_btn {
-  @apply w-fit rounded-md border border-indigo-500 bg-indigo-500 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm  flex items-center justify-center;
+  @apply w-fit rounded-sm border border-indigo-500 bg-indigo-500 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm  flex items-center justify-center;
 }
 .login_btn {
-  @apply w-full rounded-md border border-indigo-500 bg-indigo-500 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm  flex items-center justify-center;
+  @apply w-full rounded-sm border border-indigo-500 bg-indigo-500 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm  flex items-center justify-center;
 }
 
 .outline_btn {

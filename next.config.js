@@ -1,15 +1,20 @@
 /** @type {import('next').NextConfig} */
+require('dotenv').config();
+
 const nextConfig = {
-	images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'media.istockphoto.com',
-        // port: '',
-        // pathname: '/account123/**',
-      },
-    ],
+  experimental: {
+    serverComponentsExternalPackages: ["mongoose"],
   },
+  images: {
+    domains: ['lh3.googleusercontent.com'],
+  },
+  webpack(config) {
+    config.experiments = {
+      ...config.experiments,
+      topLevelAwait: true,
+    }
+    return config
+  }
 }
 
 module.exports = nextConfig

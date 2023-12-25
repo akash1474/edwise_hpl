@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const Login=()=>(
-	<div className="h-[600px] w-full flex items-center justify-center">
+	<div className="h-[calc(100vh-200px)] min-h-[600px] w-full flex items-center justify-center">
 		<section className=" relative flex w-[400px] flex-col items-start justify-center py-10 px-5 max-sm:shadow-none shadow-xl shadow-slate-600">
 			<div className="flex flex-row mb-4 items-center justify-start">
 				<Image height={32} width={32} alt="Logo" src="/logo.svg" />	

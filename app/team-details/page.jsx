@@ -1,13 +1,58 @@
 "use client";
-import {useState,useEffect} from 'react';
+import Image from 'next/image';
+import {useState,useEffect,useRef} from 'react';
 import InputComponent from '@components/InputComponent';
 import PlayerDetail from '@components/PlayerDetail';
 import InfoAlert from '@components/InfoAlert';
 
-const TeamPage=()=>(
+const TeamPage=()=>{
+	const teamNameRef=useRef();
+	const [msg,setMsg]=useState("Invalid Team Name: Please provide a valid name for your team.");
+	const [error,setError]=useState(false);
+
+	const createTeam=async(e)=>{
+		e.preventDefault();
+		if(!teamNameRef.current.value){
+			setMsg("Invalid Team Name: Please provide a valid name for your team.");
+			setError(true);
+			return;
+		}
+		try{
+			const res=await fetch("/api/teams/new",{
+				method:'POST',
+				body:JSON.stringify({
+					name:teamNameRef.current.value
+				})
+			});
+
+			if(res.ok){
+				alert("Team created successfully!");
+			}
+		}catch(err){
+			console.log(err);
+		}
+	}
+
+
+	return(
 	<div className="flex justify-center">
 
 		<section className="flex flex-col items-center w-3/4">
+		{
+			error ?
+			<div className="flex rounded-sm z-50 px-5 flex-col w-fit py-2 fixed right-4 bottom-4 bg-rose-200">
+				<Image
+					className="absolute cursor-pointer top-2 right-2"
+					src="/assets/close.svg" 
+					height={16} width={16} 
+					alt="close" 
+					onClick={()=>setError(false)}
+				/>
+				<p className="text-rose-600 mb-2 font-bold">Error</p>
+				<p className="text-black max-w-[350px]">{msg}</p>
+			</div>
+			:null
+		}
 			{/*Captain Details*/}
 			<div className="flex flex-wrap justify-between gap-5 mt-10 relative py-16">
 				<InfoAlert title="Note" description="Please fill the details of the captain." />
@@ -19,7 +64,13 @@ const TeamPage=()=>(
 			</div>
 			<div className="flex flex-col mt-5 relative py-16">
 				<p className="text-3xl font-extrabold absolute top-4 left-0">Team Details</p>
-				<InputComponent label="Team Name" />	
+				<div className="flex gap-5 flex-col w-full">
+					<div className="flex gap-5 flex-wrap items-center justify-between w-full">
+						<InputComponent elRef={teamNameRef} label="Team Name" />	
+						<InputComponent label="Team Description" />	
+					</div>
+					<button type="button" onClick={createTeam} className="black_btn_square">Create Team</button>
+				</div>
 				<InfoAlert title="Note" description={"Select the player from the drop down. Fill the player details. Save the player info by clicking the button below. After saving select the next player and repeat the process."} />
 			    <div className="mb-10">
 			      <label className='mb-[5px] block text-base font-medium text-dark'>
@@ -39,7 +90,7 @@ const TeamPage=()=>(
 					<InputComponent label="Course" />	
 					<InputComponent label="Age" />	
 					<InputComponent label="WhatsApp Number" />	
-					<button className="login_btn font-bold">Save Current Player Information</button>
+					<button className="black_btn_square w-full">Save Current Player Information</button>
 				</div>
 			</div>
 			<div className="flex flex-col mt-10 relative py-16 w-full max-sm:pt-20">
@@ -55,5 +106,6 @@ const TeamPage=()=>(
 
 	</div>
 );
+}
 
 export default TeamPage;

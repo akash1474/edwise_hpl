@@ -59,10 +59,10 @@ export default function Home() {
       <section className="w-full bg-indigo-500 flex items-center justify-center py-16 ">
         <div className="max-md:flex-col w-4/5 max-w-7xl rounded-lg bg-white py-6 px-16 flex flex-row items-center justify-between max-sm:px-5 max-sm:py-0">
           <div className="flex flex-col">
-            <p className="text-4xl font-extrabold mb-5 max-sm:text-2xl max-sm:mt-10">
+            <div className="text-4xl font-extrabold mb-5 max-sm:text-2xl max-sm:mt-10">
               <p className="text-indigo-500">Secure Your Spot!</p>
               Register now for an unforgettable cricket event.
-            </p>
+            </div>
             <button type="button" className="primary_btn">Learn More</button>
           </div>
           <Image
