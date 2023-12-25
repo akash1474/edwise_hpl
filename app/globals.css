@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -16,12 +11,134 @@
   }
 }
 
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: #fff;
+}
+
+.nav-link{
+  @apply font-medium
+}
+
+.nav-link:hover{
+  text-decoration: none;
+  box-shadow: 0 2px 0 0 #333;
+}
+
+
+.footer-container{
+  max-width: 900px;
+}
+
+
+.menu{
+  display: grid;
+    place-items: center;
+    height: 289px;
+    width: -moz-fit-content;
+    width: fit-content;
+    position: absolute;
+    z-index: 100;
+    padding: 50px;
+    right: 50px;
+    top: 50px;
+}
+
+.menu-disable{
+  display: none;
+}
+
+.menu svg{
+  height:22px;
+  width:22px;
+  position: absolute;
+  right: 10px;
+  top:10px;
+  cursor: pointer;
+}
+
+.menu-container{
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.menu-item{
+  margin-bottom: 20px;
+  color:#aaa;
+}
+
+.menu-item:hover{
+  color:#fff
+}
+
+.gradient {
+  height: fit-content;
+  z-index: 3;
+  width: 100%;
+  max-width: 640px;
+  background-image: radial-gradient(
+      at 27% 37%,
+      hsla(215, 98%, 61%, 1) 0px,
+      transparent 0%
+    ),
+    radial-gradient(at 97% 21%, hsla(125, 98%, 72%, 1) 0px, transparent 50%),
+    radial-gradient(at 52% 99%, hsla(354, 98%, 61%, 1) 0px, transparent 50%),
+    radial-gradient(at 10% 29%, hsla(256, 96%, 67%, 1) 0px, transparent 50%),
+    radial-gradient(at 97% 96%, hsla(38, 60%, 74%, 1) 0px, transparent 50%),
+    radial-gradient(at 33% 50%, hsla(222, 67%, 73%, 1) 0px, transparent 50%),
+    radial-gradient(at 79% 53%, hsla(343, 68%, 79%, 1) 0px, transparent 50%);
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  filter: blur(100px) saturate(150%);
+  top: 80px;
+  opacity: 0.15;
+}
+
+.orange_gradient {
+  @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
+}
+
+.green_gradient {
+  @apply bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent;
+}
+
+.blue_gradient {
+  @apply bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent;
+}
+
+.head_text {
+  @apply mt-5 text-4xl font-extrabold leading-[1.15] text-black sm:text-6xl;
+}
+
+.black_btn {
+  @apply w-fit rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm  flex items-center justify-center;
+}
+.primary_btn {
+  @apply w-fit rounded-md border border-indigo-500 bg-indigo-500 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm  flex items-center justify-center;
+}
+.login_btn {
+  @apply w-full rounded-md border border-indigo-500 bg-indigo-500 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm  flex items-center justify-center;
+}
+
+.outline_btn {
+  @apply rounded-full border border-black bg-transparent py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm  flex items-center justify-center;
+}
+
+.home_section{
+  @apply w-4/5 h-16 flex flex-row items-center justify-center py-10;
+}
+
+.spinner_container{
+  height:100vh;
+  display: grid;
+  place-items: center;
 }
