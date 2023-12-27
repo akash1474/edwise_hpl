@@ -19,7 +19,7 @@ export default async function Home() {
           <p className="mt-5 text-5xl font-extrabold max-md:text-center max-sm:text-4xl">Welcome to Hostel Premier League</p>
           <p className=" text-4xl font-extrabold green_gradient max-md:text-center">A Thrilling Cricket Experience</p>
           <p className="text-slate-600 font-medium w-1/2 my-4 max-md:text-center max-sm:w-3/4">Experience the thrill of the game, witness top teams in action, and create lasting memories at this unmissable sporting spectacle.</p>
-          <button type="button" className="black_btn">Learn More</button>
+          <button type="button" className="black_btn ">Learn More</button>
         </div>
         <Image 
           src="/assets/batsman.jpg"
@@ -60,7 +60,7 @@ export default async function Home() {
 */}
 
       <section id="info" className="w-4/5 max-w-7xl  flex flex-col items-center justify-center py-10 mt-10 max-sm:w-full">
-        <p className="text-5xl mb-5 font-extrabold max-md:text-4xl max-md:text-center">Team Registration Process</p>
+        <p className="text-5xl mb-5 font-extrabold max-md:text-4xl max-sm:text-3xl max-md:text-center">Team Registration Process</p>
         <Step 
           number="#1"
           title="Captain Login/Signup"
@@ -94,8 +94,8 @@ export default async function Home() {
       </section>
       <section className="w-full bg-indigo-500 flex items-center justify-center py-16 ">
         <div className="max-md:flex-col w-4/5 max-w-7xl rounded-lg bg-white py-6 px-16 flex flex-row items-center justify-between max-sm:px-5 max-sm:py-0">
-          <div className="flex flex-col">
-            <div className="text-4xl font-extrabold mb-5 max-sm:text-2xl max-sm:mt-10">
+          <div className="flex flex-col max-md:items-center">
+            <div className="text-4xl font-extrabold mb-5 max-sm:text-2xl max-md:w-full max-md:text-center max-sm:mt-10">
               <p className="text-indigo-500">Secure Your Spot!</p>
               Register now for an unforgettable cricket event.
             </div>

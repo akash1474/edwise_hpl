@@ -10,8 +10,8 @@ const Step =({img,title,desc,number})=>(
 			className="mr-5 max-md:mb-5 max-sm:w-[196px] max-sm:h-[196px]"
 		/>	
 		<div className="flex flex-col max-md:items-center">
-			<p className="font-bold text-indigo-500 text-3xl mb-2 max-md:text-center max-sm:text-2xl">{title}</p>	
-			<p className="font-medium text-lg max-md:text-center max-sm:text-base">{desc}</p>	
+			<p className="font-bold text-black text-3xl mb-2 max-md:text-center max-sm:text-2xl">{title}</p>	
+			<p className="font-medium text-lg text-slate-700 max-md:text-center max-sm:text-base">{desc}</p>	
 		</div>
 	</div>
 );

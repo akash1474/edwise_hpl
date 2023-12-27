@@ -121,7 +121,7 @@ body {
 }
 
 .black_btn {
-  @apply w-fit rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm  flex items-center justify-center;
+  @apply w-fit rounded-full border border-black bg-black py-2 px-7 text-white transition-all hover:bg-white hover:text-black text-center text-sm  flex items-center justify-center;
 }
 .black_btn_square {
   @apply w-fit rounded-sm max-md:w-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm  flex items-center justify-center;

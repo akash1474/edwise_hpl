@@ -297,7 +297,7 @@ const TeamPage=()=>{
 		<section className="flex flex-col items-center w-3/4">
 		{
 			error ?
-			<div className="flex rounded-sm z-50 px-5 flex-col w-fit py-2 fixed right-4 bottom-4 bg-rose-200">
+			<div className="flex rounded-sm z-50 px-5 flex-col w-fit max-sm:w-full max-sm:right-0 max-sm:bottom-0 max-sm:rounded-none py-2 fixed right-4 bottom-4 bg-rose-200">
 				<Image
 					className="absolute cursor-pointer top-2 right-2"
 					src="/assets/close.svg" 
@@ -305,8 +305,8 @@ const TeamPage=()=>{
 					alt="close" 
 					onClick={()=>setError(false)}
 				/>
-				<p className="text-rose-600 mb-2 font-bold">Error</p>
-				<p className="text-black max-w-[350px]">{msg}</p>
+				<p className="text-rose-600 mb-2 font-bold text-lg">Error</p>
+				<p className="text-black max-w-[350px] max-sm:w-full max-sm:mb-10">{msg}</p>
 			</div>
 			:null
 		}
