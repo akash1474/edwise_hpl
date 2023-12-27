@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-function Menu({showMenu,setShowMenu,elementRef}){
+function Menu({showMenu,setShowMenu,elementRef,session}){
 
 	return (<div ref={elementRef} className={showMenu ? "menu bg-gray-800 rounded-sm" : "menu-disable"}>
 		<svg onClick={(e)=>setShowMenu(false)} className="close-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -8,10 +8,12 @@ function Menu({showMenu,setShowMenu,elementRef}){
 		</svg>
 		<div className="menu-container">
 			<Link onClick={()=>setShowMenu(false)} href="/" className="menu-item">Home</Link>
-			<Link onClick={()=>setShowMenu(false)} href="/about" className="menu-item">About</Link>
-			<Link onClick={()=>setShowMenu(false)} href="/exp" className="menu-item">Experience</Link>
-			<Link onClick={()=>setShowMenu(false)} href="/projects" className="menu-item">Projects</Link>
-			<Link onClick={()=>setShowMenu(false)} href="/contact" className="menu-item">Contact</Link>
+			{
+				session?.user ? (<Link onClick={()=>setShowMenu(false)} href="/team-details" className="menu-item">Team</Link>) :null
+			}
+			{/*<Link onClick={()=>setShowMenu(false)} href="#info" className="menu-item">Info</Link>*/}
+			<Link onClick={()=>setShowMenu(false)} href="#location" className="menu-item">Location</Link>
+			<Link onClick={()=>setShowMenu(false)} href="#contact" className="menu-item">Contact</Link>
 		</div>
 	</div>)
 }

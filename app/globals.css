@@ -19,6 +19,7 @@
 
 body {
   background: #fff;
+  scroll-behavior: smooth;
 }
 
 .nav-link{

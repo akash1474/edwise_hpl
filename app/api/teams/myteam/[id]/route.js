@@ -1,16 +1,16 @@
 import Team from '@models/team.js';
 import { connectToDB } from '@utils/database';
 
-export const POST=async(req)=>{
-	const {user_id,name,description}=await req.json();
+export const GET=async(req,{params})=>{
 
 	try{
 		await connectToDB();
-
-		const newTeam= new Team({name,description,user_id});
-		await newTeam.save();
-
-		return new Response(JSON.stringify(newTeam),{status:201});
+		console.log(params.id)
+		const team=await Team.findOne({user_id:params.id});
+		if(!team){
+			return new Response(JSON.stringify({}),{status:404});
+		}
+		return new Response(JSON.stringify(team),{status:201});
     } catch (error) {
     	console.log("Error",error);
     	if(error?.code==11000){

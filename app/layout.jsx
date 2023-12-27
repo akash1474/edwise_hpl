@@ -2,6 +2,7 @@ import { Overpass } from 'next/font/google'
 import NavBar from '@components/NavBar';
 import Footer from '@components/Footer';
 import Provider from '@components/Provider';
+import {EdgeStoreProvider} from "@components/edgestore"
 import './globals.css'
 
 const overpass = Overpass({ subsets: ['latin'],weights:[500,600,700,800,900] })
@@ -16,9 +17,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={overpass.className}>
         <Provider>
-          <NavBar/>
-          {children}
-          <Footer/>
+          <EdgeStoreProvider >
+            <NavBar/>
+            {children}
+            <Footer/>
+          </EdgeStoreProvider>
         </Provider>
       </body>
     </html>

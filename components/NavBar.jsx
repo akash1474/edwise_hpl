@@ -3,11 +3,13 @@ import Image from 'next/image';
 import Link from 'next/link'
 import PrimaryButton from '@components/PrimaryButton'
 import Menu from '@components/Menu';
+import {useRouter} from 'next/navigation';
 import {useState,useRef,useEffect} from 'react';
 import {signIn,signOut,useSession,getProviders} from 'next-auth/react';
 
 const NavBar =()=>{
 	const {data:session}=useSession();
+	const router=useRouter();
 
 	const [providers,setProviders]=useState(null);
 	const [isLoggedIn,setIsLoggedIn]=useState(false);
@@ -26,13 +28,17 @@ const NavBar =()=>{
 	    };
 	}, []);
 
-	
+
 	useEffect(() => {
-	(async () => {
-		const res = await getProviders();
-		setProviders(res);
-	})();
+		(async () => {
+			const res = await getProviders();
+			setProviders(res);
+		})();
 	}, []);
+
+	if(session?.user){
+		localStorage.setItem("user",JSON.stringify(session.user));
+	}
 
   // const fetchPosts = async () => {
   //   const response = await fetch("/api/users/298349");
@@ -53,9 +59,11 @@ const NavBar =()=>{
 			<p className="text-lg ml-2 max-sm:hidden">Hostel Premier League</p>
 		</Link>
 		<div className="flex w-96 items-center justify-between max-md:hidden">
-			<Link href="/home" className="nav-link">Home</Link>
-			<Link href="/about" className="nav-link">About</Link>
-			<Link href="/rules" className="nav-link">Rules</Link>
+			<Link href="/" className="nav-link">Home</Link>
+			{
+				session?.user ? <Link href="/team-details" className="nav-link">Team</Link>:null
+			}
+			<Link href="/#info" className="nav-link">Info</Link>
 			<Link href="/process" className="nav-link">Process</Link>
 			<Link href="/location" className="nav-link">Location</Link>
 		</div>
@@ -67,11 +75,15 @@ const NavBar =()=>{
 		{
 			session?.user ? (
 			<div className="flex gap-3 md:gap-5">
-	            <button type='button' onClick={signOut} className='outline_btn'>
+	            <button type='button' onClick={async()=>{
+	            	localStorage.clear();
+	            	await signOut();
+	            	router.push('/');
+	            }} className='outline_btn'>
 	              Sign Out
 	            </button>
 
-	            <Link href='/profile'>
+	            <Link href='/team-details'>
 	              <Image
 	                src={session?.user.image}
 	                width={37}
@@ -88,8 +100,9 @@ const NavBar =()=>{
 	                <button
 	                  type='button'
 	                  key={provider.name}
-	                  onClick={() => {
-	                    signIn(provider.id);
+	                  onClick={async() => {
+	                    await signIn(provider.id);
+		            	router.push('/');
 	                  }}
 	                  className='black_btn'
 	                >
@@ -105,7 +118,7 @@ const NavBar =()=>{
 			</div>
 		</div>
 				{/*<Image src="https://media.istockphoto.com/id/1495088043/vector/user-profile-icon-avatar-or-person-icon-profile-picture-portrait-symbol-default-portrait.jpg?s=612x612&w=0&k=20&c=dhV2p1JwmloBTOaGAtaA3AW1KSnjsdMt7-U_3EZElZ0=" height={42} width={42} className="rounded-full" alt="profile"/>*/}
-		<Menu elementRef={elementRef} showMenu={showMenu} setShowMenu={setShowMenu} />
+		<Menu elementRef={elementRef} showMenu={showMenu} setShowMenu={setShowMenu} session={session} />
 	</div>
 }
 
