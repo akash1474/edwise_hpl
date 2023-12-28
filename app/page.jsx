@@ -1,25 +1,38 @@
-import Image from 'next/image'
-import Step from '@components/Step'
-import Verification from '@components/Verification';
 import {getServerSession} from 'next-auth';
 import authOptions from '@utils/auth.js';
-import User from '@models/user';
+
 import Link from 'next/link'
+import Image from 'next/image'
+import dynamic from 'next/dynamic'
+
+
+import { InformationCircleIcon } from '@heroicons/react/24/outline'
+import Verification from '@components/Verification';
+import FAQComponent from '@components/FAQComponent';
+const CountDownTimer = dynamic(() => import('@components/CountDownTimer'), {ssr: false});
+import Step from '@components/Step'
+import frequentQuestions from '@utils/faqs.js';
 
 export default async function Home() {
   const session=await getServerSession(authOptions);
   console.log(session);
+  const targetDate = new Date('2023-12-31T23:59:59');
   return (
     <div className="w-full flex flex-col items-center relative">
       {
         session?.user ?  <Verification user={session.user}/> : null
       }
+
+
       <section className="w-4/5 h-15 flex flex-row items-center justify-center py-10 max-md:flex-col max-sm:w-full">
         <div className="flex flex-col max-md:items-center">
           <p className="mt-5 text-5xl font-extrabold max-md:text-center max-sm:text-4xl">Welcome to Hostel Premier League</p>
           <p className=" text-4xl font-extrabold green_gradient max-md:text-center">A Thrilling Cricket Experience</p>
           <p className="text-slate-600 font-medium w-1/2 my-4 max-md:text-center max-sm:w-3/4">Experience the thrill of the game, witness top teams in action, and create lasting memories at this unmissable sporting spectacle.</p>
-          <button type="button" className="black_btn ">Learn More</button>
+          <button type="button" className="btn_black w-fit rounded-sm group">
+            <InformationCircleIcon className="h-5 w-5 text-white mr-2 group-hover:text-black transition-colors duration-75" />
+            Learn More
+          </button>
         </div>
         <Image 
           src="/assets/batsman.jpg"
@@ -28,17 +41,21 @@ export default async function Home() {
           alt="Batsman"
         />
       </section>
+      
+      <section className="w-4/5 h-15 flex flex-row items-center justify-center py-10 max-md:flex-col max-sm:w-full">
+        <CountDownTimer targetDate={targetDate}/>
+      </section>
 
       {
         session?.user ? 
           (<div className="max-md:flex-col w-4/5 max-w-7xl rounded-lg bg-white border border-slate-300 shadow-md mb-10 py-6 px-16 flex flex-row items-center justify-between max-sm:px-5 max-sm:py-0">
             <div className="flex flex-col max-md:order-2 max-md:mb-5">
-              <div className="text-2xl font-extrabold mb-5 max-md:w-full max-md:text-center max-sm:text-2xl">
-                <p className="text-teal-500 max-md:w-full max-md:text-center text-3xl">Team Details</p>
+              <div className="text-2xl font-extrabold mb-5 max-md:w-full max-md:text-center">
+                <p className="text-teal-500 max-md:w-full max-md:text-center text-3xl">Manage Your Team</p>
                 Enter/Verify your team details by clicking on the button
               </div>
               <Link href="/team-details">
-                <button type="button" className="primary_btn max-md:w-full">View/Fill Team Details</button>
+                <button type="button" className="btn_black rounded-sm w-fit max-md:w-full">View/Fill Team Details</button>
               </Link>
             </div>
             <Image
@@ -108,6 +125,16 @@ export default async function Home() {
             className="max-sm:w-[256px]"
             alt="Batsman"
           />
+        </div>
+      </section>
+      <section id="faq" className="w-4/5 max-sm:w-full py-24 px-6 max-w-[80rem] mx-auto">
+        <div className="max-w-[56rem] mx-auto flex flex-col w-full">
+          <p className="text-3xl font-extrabold mb-8">Frequently Asked Questions</p> 
+          <div className="flex flex-col items-center">
+            {
+              frequentQuestions.map((data)=><FAQComponent key={data.question} data={data} />)
+            }
+          </div>
         </div>
       </section>
       </div>)

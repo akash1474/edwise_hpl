@@ -104,6 +104,20 @@ body {
   opacity: 0.15;
 }
 
+@layer components{
+  .btn_black{
+    @apply border border-black bg-black py-2 px-7 text-white transition-all hover:bg-white hover:text-black text-center text-sm  flex items-center justify-center;
+  }
+
+  .btn_primary{
+    @apply border border-indigo-500 bg-indigo-500 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm  flex items-center justify-center;
+  }
+
+  .btn_success{
+    @apply border border-emerald-500 bg-emerald-500 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm  flex items-center justify-center;
+  }
+}
+
 .orange_gradient {
   @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
 }
@@ -116,21 +130,12 @@ body {
   @apply bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent;
 }
 
-.head_text {
-  @apply mt-5 text-4xl font-extrabold leading-[1.15] text-black sm:text-6xl;
+.emerald_gradient{
+  @apply mb-4 text-4xl text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400 w-full font-black text-center
 }
 
-.black_btn {
-  @apply w-fit rounded-full border border-black bg-black py-2 px-7 text-white transition-all hover:bg-white hover:text-black text-center text-sm  flex items-center justify-center;
-}
-.black_btn_square {
-  @apply w-fit rounded-sm max-md:w-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm  flex items-center justify-center;
-}
-.primary_btn {
-  @apply w-fit rounded-sm border border-indigo-500 bg-indigo-500 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm  flex items-center justify-center;
-}
-.login_btn {
-  @apply w-full rounded-sm border border-indigo-500 bg-indigo-500 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm  flex items-center justify-center;
+.head_text {
+  @apply mt-5 text-4xl font-extrabold leading-[1.15] text-black sm:text-6xl;
 }
 
 .outline_btn {

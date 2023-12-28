@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const Login=()=>(
 	<div className="h-[calc(100vh-200px)] min-h-[600px] w-full flex items-center justify-center">
-		<section className=" relative flex w-[400px] flex-col items-start justify-center py-10 px-5 max-sm:shadow-none shadow-xl shadow-slate-600">
+		<section className=" relative flex w-[400px] flex-col items-start justify-center py-10 px-5 max-sm:shadow-none shadow-md shadow-slate-600">
 			<div className="flex flex-row mb-4 items-center justify-start">
 				<Image height={32} width={32} alt="Logo" src="/logo.svg" />	
 				<p className="text-lg font-bold ml-2 ">Hostel Premier League</p>
@@ -55,9 +55,9 @@ const Login=()=>(
 		        </span>
 		      </div>
 		    </div>
-          <button type="button" className="login_btn">Login</button>
+          <button type="button" className="btn_black w-full rounded-sm">Login</button>
           <div className="flex justify-center w-full my-2 font-bold text-slate-600">Or</div>
-          <div className="flex transition-all hover:bg-slate-200 cursor-pointer items-center rounded-md justify-center py-1 border w-full  border-slate-500">
+          <div className="flex transition-all hover:bg-slate-200 cursor-pointer items-center rounded-sm justify-center py-1 border w-full  border-slate-500">
           	<Image src="/assets/google.svg" height={20} width={20} alt="google_icon"/>	
           	<p className="text-base font-bold ml-5">SignUp with Google</p>
           </div>

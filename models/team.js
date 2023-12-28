@@ -17,6 +17,14 @@ const TeamSchema = new Schema({
   },
   description:{
     type:String,
+  },
+  player_count:{
+    type:Number,
+    required:[true,'Player Count is required']
+  },
+  type:{
+    type:String,
+    enum:['student','teacher','staf']
   }
 });
 

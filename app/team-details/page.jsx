@@ -316,8 +316,20 @@ const TeamPage=()=>{
 				<div className="flex gap-5 flex-wrap items-center justify-between w-full">
 					<InputComponent elRef={teamNameRef} label="Team Name" />	
 					<InputComponent elRef={teamDescRef} label="Team Description" />	
+					<div className="mb-10 w-[300px]">
+						<label className='mb-[5px] block text-base font-medium text-dark'>Select Team Type</label>
+						<div className='relative w-full z-20'>
+							<select className='relative z-20 w-full appearance-none rounded-lg border border-stroke dark:border-dark-3 bg-transparent py-[10px] px-5 text-black outline-none transition focus:border-indigo-500 active:border-primary disabled:cursor-default disabled:bg-gray-200'>
+							<option value='0' className='dark:bg-dark' default>Select</option>
+							<option value='6' className='dark:bg-dark'>Micro: 6 + 2 reserve </option>
+							<option value='8' className='dark:bg-dark'>Mini: 8 + 2 reserve </option>
+							<option value='11' className='dark:bg-dark'>Standard: 11 + 2 reserve</option>
+							</select>
+							<span className='absolute right-4 top-1/2 z-10 mt-[-2px] h-[10px] w-[10px] -translate-y-1/2 rotate-45 border-r-2 border-b-2 border-body-color'></span>
+						</div>
+			    	</div>
 				</div>
-				<button type="button" onClick={createTeam} className="black_btn_square">
+				<button type="button" onClick={createTeam} className="btn_black w-fit rounded-sm max-md:w-full">
 					{
 						isUpdatingTeam ? "Update Team" : "Create Team"
 					}
@@ -333,7 +345,7 @@ const TeamPage=()=>{
 					<InputComponent elRef={captainNumber} label="WhatsApp Number" />	
 					<InputComponent elRef={captainEmail} label="Email" />	
 				</div>
-				<button type="button" onClick={createCaptain} className="black_btn_square mt-5">{
+				<button type="button" onClick={createCaptain} className="btn_black w-fit rounded-sm max-md:w-full mt-5">{
 					isUpdatingCaptain ? "Update" : "Submit"
 				}</button>
 			</div>
@@ -348,7 +360,7 @@ const TeamPage=()=>{
 						<InputComponent elRef={player_number} label="WhatsApp Number" />	
 						<InputComponent elRef={player_email} label="Email" />	
 					</div>
-					<button onClick={addPlayer} className="black_btn_square w-full">
+					<button onClick={addPlayer} className="btn_black w-fit rounded-sm max-md:w-full">
 						{
 							isUpdatingPlayer ? "Update Player" : "Add Player To Team"
 						}
@@ -369,7 +381,7 @@ const TeamPage=()=>{
 				!session?.user.payment ?
 				(
 				<Link href="/payment">
-					<button className="primary_btn font-bold mb-10">Proceed To Playment</button>
+					<button className="btn_primary w-fit font-bold mb-10 rounded-sm">Proceed To Playment</button>
 				</Link>
 				):null
 			}

@@ -1,3 +1,4 @@
+"use client";
 import Link from 'next/link'
 
 function Menu({showMenu,setShowMenu,elementRef,session}){
