@@ -29,10 +29,12 @@ export default async function Home() {
           <p className="mt-5 text-5xl font-extrabold max-md:text-center max-sm:text-4xl">Welcome to Hostel Premier League</p>
           <p className=" text-4xl font-extrabold green_gradient max-md:text-center">A Thrilling Cricket Experience</p>
           <p className="text-slate-600 font-medium w-1/2 my-4 max-md:text-center max-sm:w-3/4">Experience the thrill of the game, witness top teams in action, and create lasting memories at this unmissable sporting spectacle.</p>
-          <button type="button" className="btn_black w-fit rounded-sm group">
-            <InformationCircleIcon className="h-5 w-5 text-white mr-2 group-hover:text-black transition-colors duration-75" />
-            Learn More
-          </button>
+          <Link href="/learn-more">
+            <span className="btn_black w-fit rounded-sm group">
+              <InformationCircleIcon className="h-5 w-5 text-white mr-2 group-hover:text-black transition-colors duration-75" />
+              Learn More
+            </span>
+          </Link>
         </div>
         <Image 
           src="/assets/batsman.jpg"
@@ -41,7 +43,7 @@ export default async function Home() {
           alt="Batsman"
         />
       </section>
-      
+
       <section className="w-4/5 h-15 flex flex-row items-center justify-center py-10 max-md:flex-col max-sm:w-full">
         <CountDownTimer targetDate={targetDate}/>
       </section>
@@ -116,7 +118,9 @@ export default async function Home() {
               <p className="text-indigo-500">Secure Your Spot!</p>
               Register now for an unforgettable cricket event.
             </div>
-            <button type="button" className="primary_btn">Learn More</button>
+            <Link href="/learn-more">
+              <p className="btn_primary rounded-sm w-fit">Learn More</p>
+            </Link>
           </div>
           <Image
             src="/assets/fever.svg"

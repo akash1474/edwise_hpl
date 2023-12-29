@@ -39,15 +39,15 @@ body {
 
 .menu{
   display: grid;
-    place-items: center;
-    height: 289px;
-    width: -moz-fit-content;
-    width: fit-content;
-    position: absolute;
-    z-index: 100;
-    padding: 50px;
-    right: 50px;
-    top: 50px;
+  place-items: center;
+  height: 289px;
+  width: -moz-fit-content;
+  width: fit-content;
+  position: absolute;
+  z-index: 100;
+  padding: 50px;
+  right: 20px;
+  top: 60px;
 }
 
 .menu-disable{

@@ -20,11 +20,13 @@ const TeamSchema = new Schema({
   },
   player_count:{
     type:Number,
-    required:[true,'Player Count is required']
+    required:[true,'Player Count is required'],
+    enum:[8,10,13]
   },
   type:{
     type:String,
-    enum:['student','teacher','staf']
+    enum:['student','teacher','staf'],
+    required:[true,'Team type is required']
   }
 });
 

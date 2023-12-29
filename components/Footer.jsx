@@ -11,7 +11,7 @@ const Footer =()=>{
 					<p className="text-lg font-bold mb-1">Hostel Premier League</p>	
 					<p className="text-slate-400 text-sm mb-3">Powered By</p>
 					<Link target="_blank" href="https://www.edwiseinternational.com/">
-						<Image src="/assets/edwise.svg" height={60} width={110} alt="sponser-edwise-international" />
+						<Image src="/assets/edwise.svg" height={60} width={110} className="w-auto h-auto" alt="sponser-edwise-international" />
 					</Link>
 				</section>
 			</section>

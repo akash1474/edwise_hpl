@@ -1,5 +1,7 @@
+"use client";
 import Image from 'next/image'
 import Link from 'next/link'
+
 
 const PlayerDetail=({name,age,number,email,isCaptain,onClick,idx})=>(
 	<Link href={isCaptain ? "#captain":"#player"}>

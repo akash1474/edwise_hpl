@@ -10,7 +10,7 @@ const FileUpload=({userData})=>{
 	const [progress,setProgress]=useState(0);
 	const [isUploaded,setIsUploaded]=useState(false);
 	const [error,setError]=useState({
-		exists:true,
+		exists:false,
 		msg:"This is the error"
 	});
 

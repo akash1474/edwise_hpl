@@ -5,8 +5,7 @@ import Menu from '@components/Menu';
 import {getServerSession} from 'next-auth';
 import authOptions from '@utils/auth.js';
 
-import {signIn,signOut,useSession,getProviders} from 'next-auth/react';
-import { UserIcon,Bars3BottomRightIcon } from '@heroicons/react/24/outline'
+import {UserIcon,Bars3BottomRightIcon } from '@heroicons/react/24/outline'
 
 import {LoginButton, LogoutButton} from '@components/ClientComponents';
 
@@ -45,13 +44,15 @@ const NavBar =async()=>{
 	            </Link>
 	        </div>
             ):(
-            <LoginButton />
+            <Link href="/acknowledgement">
+		        <p className='btn_black rounded-full group min-w-fit'>
+		        	<UserIcon className="h-5 w-5 text-white mr-2 group-hover:text-black transition-colors duration-75" />
+		          	Sign in
+		        </p>
+            </Link>
           )}
-			<div className="p-1 hidden rounded-md max-md:block hover:bg-slate-300 max-md:ml-5">
-				<Bars3BottomRightIcon className="w-6 h-6 min-h-6 min-w-6" />
-			</div>
+			<Menu  session={session} />
 		</div>
-		{/*<Menu elementRef={elementRef} showMenu={showMenu} setShowMenu={setShowMenu} session={session} />*/}
 	</div>
 }
 
