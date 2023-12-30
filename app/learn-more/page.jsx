@@ -10,7 +10,7 @@ const LearnMore=()=>{
 					{/*<CreditCardIcon className="text-black h-7 w-7 min-h-6 min-2-6 mr-2" />*/}
 					<p className="text-gray-900">Payment:</p>
 				</span>
-				<ul className="space-y-1 text-gray-600 list-disc ml-5">
+				<ul className="space-y-1 text-gray-600 text-base list-disc ml-5">
 				  <li>Registration requires a payment of Rs 200, ensuring commitment to the event.</li>
 				  <li>Complete payment by scanning the provided QR code, simplifying the process for a seamless transaction experience.</li>
 				  <li>After payment, upload a screenshot for verification, confirming your registration with a visual confirmation.</li>

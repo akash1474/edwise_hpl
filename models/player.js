@@ -24,7 +24,8 @@ const PlayerSchema = new Schema({
   },
   number:{
     type:Number,
-    required:[true,"Number is required"]
+    required:[true,"Number is required"],
+    unique:[true,"Mobile Numbers should be unique"]
   },
   team_id: {
     type: mongoose.Schema.Types.ObjectId,

@@ -44,13 +44,10 @@ export default async function Home() {
         />
       </section>
 
-      <section className="w-4/5 h-15 flex flex-row items-center justify-center py-10 max-md:flex-col max-sm:w-full">
-        <CountDownTimer targetDate={targetDate}/>
-      </section>
 
       {
         session?.user ? 
-          (<div className="max-md:flex-col w-4/5 max-w-7xl rounded-lg bg-white border border-slate-300 shadow-md mb-10 py-6 px-16 flex flex-row items-center justify-between max-sm:px-5 max-sm:py-0">
+          (<div className="max-md:flex-col w-4/5 max-w-7xl rounded-lg bg-white border border-slate-300 mb-10 py-6 px-16 flex flex-row items-center justify-between max-sm:px-5 max-sm:py-0">
             <div className="flex flex-col max-md:order-2 max-md:mb-5">
               <div className="text-2xl font-extrabold mb-5 max-md:w-full max-md:text-center">
                 <p className="text-teal-500 max-md:w-full max-md:text-center text-3xl">Manage Your Team</p>
@@ -77,6 +74,11 @@ export default async function Home() {
         </div>
       </section>
 */}
+
+      <section className="w-4/5 h-15 flex flex-row items-center justify-center py-10 max-md:flex-col max-sm:w-full">
+        <CountDownTimer targetDate={targetDate}/>
+      </section>
+      
 
       <section id="info" className="w-4/5 max-w-7xl  flex flex-col items-center justify-center py-10 mt-10 max-sm:w-full">
         <p className="text-5xl mb-5 font-extrabold max-md:text-4xl max-sm:text-3xl max-md:text-center">Team Registration Process</p>

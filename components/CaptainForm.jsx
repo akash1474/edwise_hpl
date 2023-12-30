@@ -1,6 +1,7 @@
 "use client";
 import {useRef,useEffect,useState} from 'react';
 import InputComponent from '@components/InputComponent';
+import {FormSubmitButton} from '@components/ClientComponents';
 import {handleTeamForm,handleCaptainForm} from '@actions/actions.js';
 import toast from 'react-hot-toast';
 
@@ -24,7 +25,7 @@ const CaptainForm=({captain,user,team})=>{
 	return (
 
 		<form ref={formRef} action={async(formData)=>{
-			if(formData.get("number").length>10){
+			if(!(formData.get("number").toString().length===10)){
 				toast.error("WhatsApp/Mobile number should be of 10 digits");
 				return;
 			}
@@ -36,6 +37,10 @@ const CaptainForm=({captain,user,team})=>{
 				formData.set("captain_id",captain._id)
 				formData.set("type","patch");
 			}else{
+				if(!team?._id){
+					toast.error("Please create a team first");
+					return;
+				}
 				formData.set("team_id",team._id);
 				formData.set("type","new");
 			}
@@ -59,11 +64,7 @@ const CaptainForm=({captain,user,team})=>{
 				<InputComponent name="number" label="WhatsApp Number" type="number" maxLength={10} />	
 				<InputComponent name="email" type="email" label="Email" />	
 			</span>
-			<button type="submit" className="btn_black w-fit rounded-sm max-md:w-full mt-5">
-				{
-					isUpdating ? "Update" : "Submit"
-				}
-			</button>
+			<FormSubmitButton text={isUpdating ? "Update" : "Submit"} />
 		</form>
 
 	)

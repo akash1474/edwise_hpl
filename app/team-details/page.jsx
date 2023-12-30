@@ -15,17 +15,19 @@ import Player from '@models/player'
 import { connectToDB } from '@utils/database';
 
 const TeamPage=async()=>{
-	const session=await getServerSession(authOptions);
+	let session=await getServerSession(authOptions);
 	if(!session?.user) return redirect("/");
 
 	await connectToDB();
-	const team=await Team.findOne({user_id:session.user.id});
-	console.log(team);
+	let team=await Team.findOne({user_id:session.user.id});
 	let players=null;
 	let captain=null;
 	if(team){
 		players=await Player.find({team_id:team._id});
 		console.log(players);
+		session=JSON.parse(JSON.stringify(session));
+		team=JSON.parse(JSON.stringify(team));
+		players=JSON.parse(JSON.stringify(players));
 		captain=players[0];
 	}
 
@@ -49,7 +51,7 @@ const TeamPage=async()=>{
 			<div id="player" className="flex flex-col mt-5 relative py-16">
 				<p className="text-3xl font-extrabold absolute top-4 left-0">Player Details</p>
 				<InfoAlert title="Note" description={"Fill the details of each player. Click the button below to add player to the team. Repeat the process for filling the detials of remaining players. Once a player is added you can verify the details in team summary section below."} />
-				<PlayerForm team={team} user={session?.user} />
+				<PlayerForm team={team} player={null} />
 			</div>
 
 
@@ -58,7 +60,7 @@ const TeamPage=async()=>{
 				<InfoAlert title="Note" description={"You can update a player info by clicking on the respective player. The details of the player will be populated in the above section. You can then update the info and click the update button."} />
 				{
 					players ? 
-					players.map((player,i)=><PlayerDetail  idx={i} key={player.email} name={player.name} email={player.email} number={player.number} age={player.age} isCaptain={player.is_captain} />)
+					players.map((player,i)=><PlayerDetail key={player.email} player={player} />)
 					:
 					<p className="text-slate-400">No Team Members Added</p>
 				}

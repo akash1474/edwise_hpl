@@ -5,6 +5,10 @@ import Team from '@models/team.js';
 import Player from '@models/player.js';
 import { connectToDB } from '@utils/database';
 
+async function wait(ms){
+	return new Promise(res=>setTimeout(res,ms));
+}
+
 export const handleTeamForm=async(formData)=>{
 	console.log(formData)
 	if(formData.get("type")==="new"){
@@ -93,6 +97,7 @@ export const handleCaptainForm=async(formData)=>{
 
 		try{
 			await connectToDB();
+			// await wait(2000);
 
 			const name=formData.get("name");
 			const age=formData.get("age");
@@ -158,9 +163,9 @@ export const handlePlayerForm=async(formData)=>{
 			const course=formData.get("course");
 			const email=formData.get("email");
 			const number=formData.get("number");
-			const captain_id=formData.get("captain_id")
+			const player_id=formData.get("player_id")
 
-			const player=await Player.findByIdAndUpdate(captain_id,{name,course,age,email,number});
+			const player=await Player.findByIdAndUpdate(player_id,{name,course,age,email,number});
 			if(!player){
 				return {status:false,msg:"Failed to update player details!"};
 			}

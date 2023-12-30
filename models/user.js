@@ -23,6 +23,10 @@ const UserSchema = new Schema({
   verified:{
     type:Boolean,
     default:false,
+  },
+  has_type:{
+    type:Boolean,
+    default:false
   }
 });
 

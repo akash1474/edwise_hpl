@@ -25,7 +25,7 @@ const TeamSchema = new Schema({
   },
   type:{
     type:String,
-    enum:['student','teacher','staf'],
+    enum:['student','teacher','staff'],
     required:[true,'Team type is required']
   }
 });

@@ -3,16 +3,28 @@ import {useRef,useEffect,useState} from 'react';
 import InputComponent from '@components/InputComponent';
 import {handlePlayerForm} from '@actions/actions.js';
 import toast from 'react-hot-toast';
+import {FormSubmitButton} from '@components/ClientComponents';
+import {useRouter} from 'next/navigation';
 
 
-const PlayerForm=({user,team})=>{
+const PlayerForm=({team,player,isUpdating})=>{
 	const formRef=useRef();
-	const [isUpdating,setIsUpdating]=useState(false);
+	const router=useRouter();
+
+
+	useEffect(()=>{
+		if(!player) return;
+		formRef.current.name.value=player.name;
+		formRef.current.age.value=player.age;
+		formRef.current.course.value=player.course;
+		formRef.current.number.value=player.number;
+		formRef.current.email.value=player.email;
+	},[]);
 
 	return (
 
 		<form ref={formRef} action={async(formData)=>{
-			if(formData.get("number").length>10){
+			if(!(formData.get("number").toString().length===10)){
 				toast.error("WhatsApp/Mobile number should be of 10 digits");
 				return;
 			}
@@ -32,6 +44,9 @@ const PlayerForm=({user,team})=>{
 				if(res.status){
 					toast.success(res.msg);
 					formRef.current.reset();
+					if(isUpdating){
+						router.push('/team-details');
+					}
 				}else{
 					toast.error(res.msg);
 				}
@@ -47,11 +62,7 @@ const PlayerForm=({user,team})=>{
 				<InputComponent name="number" label="WhatsApp Number" type="number"/>	
 				<InputComponent name="email" type="email" label="Email" />	
 			</span>
-			<button type="submit" className="btn_black w-fit rounded-sm max-md:w-full mt-5">
-				{
-					isUpdating ? "Update" : "Submit"
-				}
-			</button>
+			<FormSubmitButton text={isUpdating ? "Update" : "Submit"} />
 		</form>
 
 	)
