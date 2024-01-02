@@ -2,26 +2,29 @@
 import { revalidatePath } from 'next/cache'
 
 import Team from '@models/team.js';
+import User from '@models/user.js';
 import Player from '@models/player.js';
 import { connectToDB } from '@utils/database';
 
-async function wait(ms){
+export async function wait(ms){
 	return new Promise(res=>setTimeout(res,ms));
 }
 
 export const handleTeamForm=async(formData)=>{
 	console.log(formData)
-	if(formData.get("type")==="new"){
+	if(formData.get("req")==="new"){
 		try{
 			await connectToDB();
 			const name=formData.get('name');
 			const description=formData.get('desc');
 			const player_count=formData.get('size');
 			const user_id=formData.get('usr_id');
-			const type="student";
+			const type=formData.get('type');
 
 			const newTeam= new Team({name,description,player_count,user_id,type});
 			await newTeam.save();
+
+			await User.findByIdAndUpdate(user_id,{has_type:true});
 
 			revalidatePath("/team-details");
 			return {status:true,msg:"Team successfully created!"};
@@ -37,6 +40,7 @@ export const handleTeamForm=async(formData)=>{
 		const name=formData.get('name');
 		const description=formData.get('desc');
 		const player_count=formData.get('size');
+		const type=formData.get('type');
 		const id=formData.get('team_id');
 		try{
 			await connectToDB();
@@ -44,6 +48,7 @@ export const handleTeamForm=async(formData)=>{
 				name,
 				description,
 				player_count,
+				type
 			},{
 				runValidators:true
 			});
@@ -70,7 +75,7 @@ export const handleTeamForm=async(formData)=>{
 
 
 export const handleCaptainForm=async(formData)=>{
-	if(formData.get("type")=="new"){
+	if(formData.get("req")=="new"){
 		try{
 			await connectToDB();
 
@@ -80,9 +85,9 @@ export const handleCaptainForm=async(formData)=>{
 			const email=formData.get("email");
 			const number=formData.get("number");
 			const team_id=formData.get("team_id");
-			const is_captain=true;
+			const type="captain";
 
-			const player= new Player({name,course,is_captain,age,email,team_id,number});
+			const player= new Player({name,course,age,email,team_id,number,type});
 			await player.save();
 			console.log(player);
 
@@ -131,7 +136,7 @@ export const handleCaptainForm=async(formData)=>{
 
 
 export const handlePlayerForm=async(formData)=>{
-	if(formData.get("type")=="new"){
+	if(formData.get("req")=="new"){
 		try{
 			await connectToDB();
 
@@ -141,9 +146,9 @@ export const handlePlayerForm=async(formData)=>{
 			const email=formData.get("email");
 			const number=formData.get("number");
 			const team_id=formData.get("team_id");
-			const is_captain=false;
+			const type=formData.get("type");
 
-			const player= new Player({name,course,is_captain,age,email,team_id,number});
+			const player= new Player({name,course,age,email,team_id,number,type});
 			await player.save();
 
 			revalidatePath("/team-details");
@@ -164,8 +169,9 @@ export const handlePlayerForm=async(formData)=>{
 			const email=formData.get("email");
 			const number=formData.get("number");
 			const player_id=formData.get("player_id")
+			const type=formData.get("type");
 
-			const player=await Player.findByIdAndUpdate(player_id,{name,course,age,email,number});
+			const player=await Player.findByIdAndUpdate(player_id,{name,course,age,email,number,type});
 			if(!player){
 				return {status:false,msg:"Failed to update player details!"};
 			}

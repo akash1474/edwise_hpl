@@ -17,6 +17,7 @@ const authOptions={
       session.user.payment=sessionUser.payment;
       session.user.receipt=sessionUser.receipt;
       session.user.verified=sessionUser.verified;
+      session.user.has_type=sessionUser.has_type;
       return session;
     },
     async signIn({ account, profile, user, credentials }) {
@@ -32,7 +33,8 @@ const authOptions={
             image: profile.picture,
             payment:false,
             receipt:"",
-            verified:false
+            verified:false,
+            has_type:false
           });
         }
 

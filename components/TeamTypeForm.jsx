@@ -4,10 +4,13 @@ import {FormSubmitButton} from '@components/ClientComponents';
 import {useState} from 'react';
 import {StudentIcon,TeacherIcon,StaffIcon} from '@icons';
 import toast from 'react-hot-toast';
+import {wait} from '@actions/actions.js';
+import {useRouter} from 'next/navigation';
 
 const TeamTypeForm=()=>{
 
 	const [select,setSelect]=useState(null);
+	const router=useRouter();
 
 	const getType=(idx)=>{
 		switch(idx){
@@ -31,9 +34,8 @@ const TeamTypeForm=()=>{
 			toast.error("Please select a team type");
 			return;
 		}
-		formData.set("team_type",type);
-		console.log(formData.get("team_type"));
-		toast.success("Please select a team type");
+		await wait(1000);
+		router.push(`/team-details?type=${type}`);
 	}
 
 

@@ -4,6 +4,7 @@ import {useRouter} from 'next/navigation';
 import { CheckBadgeIcon } from '@heroicons/react/24/outline'
 import {useEffect,useState} from 'react';
 import {useFormStatus} from 'react-dom';
+import toast  from 'react-hot-toast';
 
 const LoginButton=()=>{
 	const router=useRouter();
@@ -18,7 +19,9 @@ const LoginButton=()=>{
 	}, []);
 
 	const handleSignIn=async()=>{
-		await signIn(providers.google.id);
+		await signIn(providers.google.id,{
+			callbackUrl:'http://localhost:3000/team-type'
+		});
 	}
 
     return (<>
@@ -68,4 +71,33 @@ const FormSubmitButton=({text})=>{
 	);
 }
 
-export {LoginButton,LogoutButton,FormSubmitButton};
+
+const PaymentButton=({players,count,max})=>{
+	const router=useRouter();
+	const handleClick=()=>{
+		// if(players.length!==max){
+		// 	toast((t)=>{
+		// 		return <span className="p-5">
+		// 			<p className="text-xl font-medium">Please provide complete details</p>
+		// 			<ul className="">
+		// 				<li>List 1</li>
+		// 				<li>List 2</li>
+		// 				<li>List 3</li>
+		// 			</ul>
+		// 			<p className="text-base"></p>
+		// 		</span>
+		// 	})
+		// }
+		router.push('/payment');
+	}
+
+	return (
+		<button 
+		onClick={handleClick}
+		className="btn_black w-fit font-bold mb-10 rounded-sm">
+		Proceed To Playment
+		</button>
+	);
+}
+
+export {LoginButton,LogoutButton,FormSubmitButton,PaymentButton};

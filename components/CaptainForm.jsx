@@ -35,14 +35,14 @@ const CaptainForm=({captain,user,team})=>{
 			}
 			if(isUpdating){
 				formData.set("captain_id",captain._id)
-				formData.set("type","patch");
+				formData.set("req","patch");
 			}else{
 				if(!team?._id){
 					toast.error("Please create a team first");
 					return;
 				}
 				formData.set("team_id",team._id);
-				formData.set("type","new");
+				formData.set("req","new");
 			}
 			try{
 				const res=await handleCaptainForm(formData);

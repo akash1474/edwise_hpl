@@ -18,9 +18,10 @@ const PlayerSchema = new Schema({
     type: String,
     required: [true, 'Course is required!'],
   },
-  is_captain:{
-    type:Boolean,
-    default:false
+  type:{
+    type:String,
+    enum:['captain','batsman','bowler','wicketkeeper','allrounder','reserve'],
+    required:[true,'A Player must have a type'],
   },
   number:{
     type:Number,

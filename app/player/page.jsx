@@ -37,7 +37,7 @@ const PlayerUpdatePage=async({searchParams})=>{
 			<section className="flex flex-col items-center w-3/4">
 				<div id="player" className="flex flex-col mt-5 relative py-16">
 					<p className="text-3xl font-extrabold absolute top-4 left-0">Player Details</p>
-					<InfoAlert title="Note" description={"Fill the details of each player. Click the button below to add player to the team. Repeat the process for filling the detials of remaining players. Once a player is added you can verify the details in team summary section below."} />
+					<InfoAlert title="Note" description={"Update appropriate details of the player in their respective fields. Don't forget the press the submit button."} />
 					<PlayerForm team={team} player={player} isUpdating={true} />
 				</div>
 			</section>
