@@ -82,7 +82,7 @@ const TeamPage = async () => {
 				{!session?.user.payment ? (
 					<div className="w-4/5 max-sm:w-[calc(100%-50px)] mb-10 flex flex-col items-center">
 						<p className="w-full text-base font-medium text-center mb-5">I hereby acknowledge that the details entered in the form are accurate and valid. The validity of the entered information is crucial for successful registration and participation. Proceed to payment and secure your spot.</p>
-						<PaymentButton players={players} count={player_count} max={team.size} />
+						<PaymentButton players={players} count={player_count} max={team?.size ? team.size :0 } />
 					</div>
 				) : null}
 			</section>

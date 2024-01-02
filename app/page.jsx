@@ -16,7 +16,7 @@ import frequentQuestions from '@utils/faqs.js';
 export default async function Home() {
   const session=await getServerSession(authOptions);
   console.log(session);
-  const targetDate = new Date('2023-12-31T23:59:59');
+  const targetDate = new Date('2024-01-14T23:59:59');
   return (
     <div className="w-full flex flex-col items-center relative">
       {
