@@ -20,7 +20,7 @@ const LoginButton=()=>{
 
 	const handleSignIn=async()=>{
 		await signIn(providers.google.id,{
-			callbackUrl:'http://localhost:3000/team-type'
+			callbackUrl:'https://hostel-premier-league.vercel.app/team-type'
 		});
 	}
 
