@@ -17,20 +17,20 @@ const Footer =()=>{
 			</section>
 			<section className="imp-links flex flex-col justify-between">
 				<p className="text-lg font-bold mb-4">Important Links</p>
-				<Link href="#aboutus" className="text-sm font-medium hover:text-slate-500 transition-colors duration-300 mb-2" >About Us</Link>
+				<Link href="https://www.edwiseinternational.com/study-abroad-consultants/about.aspx" target="_blank" className="text-sm font-medium hover:text-slate-500 transition-colors duration-300 mb-2" >About Us</Link>
 				<Link href="#contactus" className="text-sm font-medium hover:text-slate-500 transition-colors duration-300 mb-2" >Contact Us</Link>
 				<Link href="#tc" className="text-sm font-medium hover:text-slate-500 transition-colors duration-300" >Terms & Conditions</Link>
 			</section>
 			<section className="flex-col">
 				<p className="text-lg font-bold mb-4">Social Links</p>
 				<section className="flex">
-					<Link href="#aboutus" className="hover:bg-slate-600 p-1 bg-slate-700 rounded-md  transition-colors duration-100 mr-2" >
+					<Link href="https://www.instagram.com/edwiseint" target="_blank" className="hover:bg-slate-600 p-1 bg-slate-700 rounded-md  transition-colors duration-100 mr-2" >
 						<Image src="/assets/instagram.svg" height={32} width={32} alt="instagram" />
 					</Link>
-					<Link href="#aboutus" className="hover:bg-slate-600 p-1 bg-slate-700 rounded-md transition-colors duration-100 mr-2" >
+					<Link href="https://www.facebook.com/edwiseinternational" target="_blank" className="hover:bg-slate-600 p-1 bg-slate-700 rounded-md transition-colors duration-100 mr-2" >
 						<Image src="/assets/facebook.svg" height={32} width={32} alt="facebook" />
 					</Link>
-					<Link href="#aboutus" className="hover:bg-slate-600 p-1 bg-slate-700 rounded-md transition-colors duration-100" >
+					<Link href="https://www.linkedin.com/company/edwise-international/?originalSubdomain=in" target="_blank" className="hover:bg-slate-600 p-1 bg-slate-700 rounded-md transition-colors duration-100" >
 						<Image src="/assets/linkedin.svg" height={32} width={32} alt="linkedin" />
 					</Link>
 				</section>

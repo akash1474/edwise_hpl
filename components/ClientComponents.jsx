@@ -72,22 +72,70 @@ const FormSubmitButton=({text})=>{
 }
 
 
+
 const PaymentButton=({players,count,max})=>{
 	const router=useRouter();
 	const handleClick=()=>{
-		// if(players.length!==max){
-		// 	toast((t)=>{
-		// 		return <span className="p-5">
-		// 			<p className="text-xl font-medium">Please provide complete details</p>
-		// 			<ul className="">
-		// 				<li>List 1</li>
-		// 				<li>List 2</li>
-		// 				<li>List 3</li>
-		// 			</ul>
-		// 			<p className="text-base"></p>
-		// 		</span>
-		// 	})
-		// }
+		let rp=2;
+		let pp=0;
+		switch(max){
+			case 8:
+				pp=6;
+				break;
+			case 10:
+				pp=8;
+				break;
+			case 13:
+				pp=11;
+				break;
+		}
+		let rpc=0;
+		let apc=0;
+		let cpc=0;
+		players.map((e)=>{
+			switch(e.type){
+			case "captain":
+				cpc++;
+				break;
+			case "reserve":
+				rpc++;
+				break;
+			default:
+				apc++;
+				break
+			}
+		})
+		console.log("Captain:",cpc);
+		console.log("Active:",apc);
+		console.log("Reserve:",rpc);
+
+		if(players.length!==max){
+			toast((t)=>{
+				return <span className="p-5">
+					<p className="text-base font-bold">Team must have {max} players</p>
+					<ul className="">
+						<li>📗 {pp} Active Players</li>
+						<li>📒 {rp} Reserve Players</li>
+					</ul>
+					<p className="text-base"></p>
+				</span>
+			})
+			return;
+		}
+
+
+		if(rpc!==rp){
+			toast.error("Your team must have 2 reserve players");
+			return;
+		}
+		if(cpc!==1){
+			toast.error("A team must have one captain");
+			return;
+		}
+		if(pp!==(cpc+apc)){
+			toast.error(`Active player count must be ${max-2}`);
+			return;
+		}
 		router.push('/payment');
 	}
 

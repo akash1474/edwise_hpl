@@ -8,6 +8,19 @@ const PlayerDetail=({player})=>{
 
 	const router=useRouter();
 
+	let color="";
+	switch(player.type){
+	case "captain":
+		color="bg-indigo-500";
+		break;
+	case "reserve":
+		color="bg-amber-500";
+		break;
+	default:
+		color="bg-blue-500";
+		break;
+	}
+
 	return (
 		<Link href={player.type==="captain" ? "#captain": `/player?id=${player._id}`}>
 			<div className="border border-slate-300 w-full py-2 rounded-md mb-4 shadow-sm hover:bg-slate-100 flex items-center justify-between px-5 max-md:flex-col">
@@ -19,7 +32,7 @@ const PlayerDetail=({player})=>{
 					</div>
 				</div>
 				<div className="flex items-center justify-center max-md:flex-wrap max-md:flex-col gap-2">
-					<p className="rounded-md flex items-center px-4 text-sm text-white bg-indigo-500 capitalize">{player.type}</p>
+					<p className={`rounded-md flex items-center px-4 text-sm text-white ${color} capitalize w-30`}>{player.type}</p>
 					<span className="flex flex-row">
 						<p className="text-xl text-slate-500 mr-4 font-bold max-sm:text-lg">{player.age}</p>
 						<div className="flex items-center mr-4">

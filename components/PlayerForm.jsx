@@ -79,6 +79,7 @@ const PlayerForm=({team,player,isUpdating,player_count})=>{
 							<option value='batsman' className='dark:bg-dark'>Batsman</option>
 							<option value='bowler' className='dark:bg-dark'>Bowler</option>
 							<option value='wicketkeeper' className='dark:bg-dark'>Wicketkeeper</option>
+							<option value='reserve' className='dark:bg-dark'>Reserve</option>
 						</select>
 						<span className='absolute right-4 top-1/2 z-10 mt-[-2px] h-[10px] w-[10px] -translate-y-1/2 rotate-45 border-r-2 border-b-2 border-body-color'></span>
 					</div>
