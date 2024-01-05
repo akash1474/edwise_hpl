@@ -4,6 +4,9 @@ import Footer from '@components/Footer';
 import Provider from '@components/Provider';
 import {EdgeStoreProvider} from "@components/edgestore"
 import {Toaster} from 'react-hot-toast';
+import dynamic from 'next/dynamic'
+const ChatBot =dynamic(()=>import("@components/ChatBot"),{ssr:false});
+
 import './globals.css'
 
 const overpass = Overpass({ subsets: ['latin'],weights:[500,600,700,800,900] })
@@ -48,6 +51,7 @@ export default function RootLayout({ children }) {
           </EdgeStoreProvider>
         </Provider>
       </body>
+      <ChatBot/>
     </html>
   )
 }
