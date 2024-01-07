@@ -26,19 +26,35 @@ export default async function Home() {
 
       <section className="w-4/5 h-15 flex flex-row items-center justify-center py-10 max-md:flex-col max-sm:w-full">
         <div className="flex flex-col max-md:items-center max-md:order-2">
-          <p className="mt-5 text-5xl font-extrabold max-md:text-center max-sm:text-4xl">Welcome to Hostel Premier League</p>
-          <p className=" text-4xl font-extrabold text-indigo-500 max-md:text-center">A Thrilling Cricket Experience</p>
-          <p className="text-slate-600 font-medium w-1/2 my-4 max-md:text-center max-sm:w-3/4">Experience the thrill of the game, witness top teams in action, and create lasting memories at this unmissable sporting spectacle.</p>
+        {
+          session?.user ?
+          (
+            <>
+              <p className="mt-5 text-4xl font-extrabold max-md:text-center max-sm:text-3xl">Hello</p>
+              <p className="text-4xl font-extrabold text-indigo-500 max-md:text-center">{session.user.name}</p>
+              <p className="text-slate-600 font-medium w-1/2 my-4 max-md:text-center max-sm:w-3/4">Get started with organizing your team by clicking on the get started button.</p>
+            </>
+          )
+          :
+          (
+            <>
+              <p className="mt-5 text-5xl font-extrabold max-md:text-center max-sm:text-4xl">Welcome to Hostel Premier League</p>
+              <p className=" text-4xl font-extrabold text-indigo-500 max-md:text-center">A Thrilling Cricket Experience</p>
+              <p className="text-slate-600 font-medium w-1/2 my-4 max-md:text-center max-sm:w-3/4">Experience the thrill of the game, witness top teams in action, and create lasting memories at this unmissable sporting spectacle.</p>
+            </>
+          )
+
+        }
           <div className="flex my-5">
-            <Link href="/acknowledgement">
-              <span className="btn_primary w-fit rounded-sm group">
+            <Link href={session?.user ? "/team-details" : "/acknowledgement"}>
+              <span className="btn_primary py-2 w-fit rounded-md group">
                 Get Started
               </span>
             </Link>
             <Link href="/learn-more">
-              <span className="w-fit rounded-sm group flex items-center px-5 py-1.5">
+              <span className="w-fit group flex items-center px-5 py-2 group">
                 Learn More
-                <ArrowRightIcon className="h-5 w-5 text-black mr-2 group-hover:text-black transition-colors duration-75 ml-2" />
+                <ArrowRightIcon className="h-5 w-5 text-black mr-2 group-hover:ml-1 transition-all duration-150 ml-2" />
               </span>
             </Link>
             
@@ -56,16 +72,16 @@ export default async function Home() {
 
       {
         session?.user ? 
-          (<div className="max-md:flex-col w-4/5 max-w-7xl rounded-lg bg-white border border-slate-300 mb-10 py-6 px-16 flex flex-row items-center justify-between max-sm:px-5 max-sm:py-0 max-md:border-none">
+          (<div className="max-md:flex-col w-4/5 max-w-7xl rounded-lg bg-white border border-slate-300 mb-10 py-6 px-16 flex flex-row items-center justify-between max-sm:py-0 max-md:border-none max-sm:w-full max-sm:px-10 max-sm:my-10">
             <div className="flex flex-col max-md:order-2 max-md:mb-5">
               <div className="text-2xl font-extrabold mb-5 max-md:w-full max-md:text-center">
-                <p className="text-teal-500 max-md:w-full max-md:text-center text-3xl">Manage Your Team</p>
-              <p className="text-slate-800 text-xl font-medium">
+                <p className="text-emerald-500 max-md:w-full max-md:text-center text-3xl">Manage Your Team</p>
+              <p className="text-slate-700 mt-5 text-lg font-medium">
               Navigate your team's journey seamlessly with our Team Dashboard. From player management to match schedules, take control of your Edwise Premier League experience.
               </p>
               </div>
               <Link href="/team-details">
-                <button type="button" className="btn_black rounded-sm w-fit max-md:w-full">View/Fill Team Details</button>
+                <button type="button" className="btn_black rounded-md w-fit max-md:w-full">View/Fill Team Details</button>
               </Link>
             </div>
             <Image
@@ -91,7 +107,7 @@ export default async function Home() {
           <div className="flex flex-col max-md:items-center max-md:order-2">
             <div className="text-3xl font-extrabold mb-5 max-sm:text-2xl max-md:w-full max-md:text-center max-sm:mt-2">
               <p className="text-red-400">Mark Your Calendar</p>
-              <p className="text-slate-800 text-xl font-medium">
+              <p className="text-slate-700 mt-5 text-lg font-medium">
               Stay tuned for thrilling matchups! Check out the schedule for upcoming Edwise Premier League matches. Plan your game days and be part of the excitement.
               </p>
             </div>
@@ -149,7 +165,7 @@ export default async function Home() {
               Register now for an unforgettable cricket event.
             </div>
             <Link href="/learn-more">
-              <p className="btn_primary rounded-sm w-fit">Learn More</p>
+              <p className="btn_primary rounded-md w-fit">Learn More</p>
             </Link>
           </div>
           <Image
