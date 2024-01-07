@@ -45,7 +45,7 @@ const TeamForm=({team,user})=>{
 			}
 
 		}catch(err){
-			toast.error(res.msg);
+			toast.error("Failed to update team details");
 		}
 	}
 

@@ -35,7 +35,7 @@ function Menu({session}){
 					session?.user ? (<Link onClick={()=>setShowMenu(false)} href="/team-details" className="menu-item">Team</Link>) :null
 				}
 				<Link onClick={()=>setShowMenu(false)} href="/learn-more" className="menu-item">Info</Link>
-				<Link onClick={()=>setShowMenu(false)} href="#location" className="menu-item">Location</Link>
+				<Link onClick={()=>setShowMenu(false)} href="/contact-us" className="menu-item">ContactUs</Link>
 				<Link onClick={()=>setShowMenu(false)} href="#contact" className="menu-item">Contact</Link>
 			</div>
 		</div>

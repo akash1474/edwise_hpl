@@ -10,7 +10,7 @@ const ChatBot=()=>{
 	const [isOpen,setIsOpen]=useState(false);
 
 	return (
-		<div className={`fixed right-5 bottom-5 h-fit  border-2 shadow-lg ${isOpen ? 'rounded-md bg-slate-200' : 'rounded-full bg-blue-200'}`}>
+		<div className={`fixed right-2 bottom-2 h-fit  border-2 shadow-lg ${isOpen ? 'rounded-md bg-slate-200' : 'rounded-full bg-blue-200'}`}>
 		{
 			isOpen ? <XMarkIcon onClick={()=>setIsOpen(false)} className="h-5 w-5 ml-auto m-2 cursor-pointer text-rose-500" /> :null
 		}

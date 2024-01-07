@@ -31,8 +31,8 @@ const NavBar = async () => {
 				<Link href="/learn-more" className="nav-link">
 					Info
 				</Link>
-				<Link href="#process" className="nav-link">
-					Process
+				<Link href="/contact-us" className="nav-link">
+					ContactUs
 				</Link>
 				<Link href="/location" className="nav-link">
 					Location

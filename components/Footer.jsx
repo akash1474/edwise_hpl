@@ -18,7 +18,7 @@ const Footer =()=>{
 			<section className="imp-links flex flex-col justify-between">
 				<p className="text-lg font-bold mb-4">Important Links</p>
 				<Link href="https://www.edwiseinternational.com/study-abroad-consultants/about.aspx" target="_blank" className="text-sm font-medium hover:text-slate-500 transition-colors duration-300 mb-2" >About Us</Link>
-				<Link href="#contactus" className="text-sm font-medium hover:text-slate-500 transition-colors duration-300 mb-2" >Contact Us</Link>
+				<Link href="/contact-us" className="text-sm font-medium hover:text-slate-500 transition-colors duration-300 mb-2" >Contact Us</Link>
 				<Link href="#tc" className="text-sm font-medium hover:text-slate-500 transition-colors duration-300" >Terms & Conditions</Link>
 			</section>
 			<section className="flex-col">

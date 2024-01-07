@@ -26,7 +26,7 @@ export const handleTeamForm=async(formData)=>{
 
 			await User.findByIdAndUpdate(user_id,{has_type:true});
 
-			revalidatePath("/team-details");
+			revalidatePath("/team-details",'page');
 			return {status:true,msg:"Team successfully created!"};
 	    } catch (error) {
 	    	console.log("Error",error);
