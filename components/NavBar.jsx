@@ -12,13 +12,16 @@ import { LoginButton, LogoutButton } from "@components/ClientComponents";
 const NavBar = async () => {
 	const session = await getServerSession(authOptions);
 	console.log(session?.user);
+	const is_admin=session?.user?.is_admin;
 
 	return (
-		<div className="flex items-center justify-between h-14 px-4 w-full bg-slate-200">
+		<div className={`flex items-center justify-between h-14 px-4 w-full ${is_admin ? null : "bg-slate-200"}`}>
 			<Link href="/" className="font-bold flex items-center justify-between">
 				<Image height={32} width={32} alt="Logo" src="/logo.svg" />
 				<p className="text-lg min-w-fit ml-2 max-sm:hidden">Hostel Premier League</p>
 			</Link>
+			{
+				!is_admin && 
 			<div className="flex w-96 items-center justify-between max-md:hidden">
 				<Link href="/" className="nav-link">
 					Home
@@ -38,11 +41,12 @@ const NavBar = async () => {
 					Location
 				</Link>
 			</div>
+			}
 			<div className="flex">
 				{session?.user ? (
 					<div className="flex gap-3 md:gap-5">
 						<LogoutButton />
-						<Link href="/team-details">
+						<Link href={session.user.is_admin ? "/admin/dashboard" :"/team-details"}>
 							<Image src={session?.user.image} width={37} height={37} className="rounded-full" alt="profile" />
 						</Link>
 					</div>

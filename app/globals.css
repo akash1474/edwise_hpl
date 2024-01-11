@@ -151,3 +151,7 @@ body {
   display: grid;
   place-items: center;
 }
+
+.brackets-viewer{
+  font-family: "Overpass";
+}

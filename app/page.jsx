@@ -4,6 +4,7 @@ import authOptions from '@utils/auth.js';
 import Link from 'next/link'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
+import {redirect} from 'next/navigation'
 
 
 import { ArrowRightIcon } from '@heroicons/react/24/outline'
@@ -12,13 +13,16 @@ import FAQComponent from '@components/FAQComponent';
 const CountDownTimer = dynamic(() => import('@components/CountDownTimer'), {ssr: false});
 import Step from '@components/Step'
 import frequentQuestions from '@utils/faqs.js';
+import Dialog from "@components/Dialog";
 
 export default async function Home() {
   const session=await getServerSession(authOptions);
   console.log(session);
+  if(session?.user?.is_admin) redirect("/admin/dashboard");
   const targetDate = new Date('2024-01-14T23:59:59');
   return (
     <div className="w-full flex flex-col items-center relative">
+      {/*<Dialog />*/}
       {
         session?.user ?  <Verification user={session.user}/> : null
       }

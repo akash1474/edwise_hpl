@@ -183,3 +183,85 @@ export const handlePlayerForm=async(formData)=>{
 
 	}
 }
+
+export const updateUserPaymentState=async(user_id,is_verified)=>{
+	try{
+		await connectToDB();
+		const user=await User.findByIdAndUpdate(user_id,{
+			verified:is_verified
+		});
+
+		if(!user) return { status:false,msg:"Failed to update"}
+		revalidatePath("/admin/dashboard");
+		return {status:true,msg:`User marked as ${is_verified ? "verified" :"pending"}!`}
+	}catch(error){
+		return { status:false,msg:"Failed to update"}
+	}
+}
+
+
+export async function searchUsers(searchTerm) {
+	try {
+		let users = await User.find({
+		  $or: [
+		    { username: { $regex: new RegExp(searchTerm, 'i') } },
+		    { email: { $regex: new RegExp(searchTerm, 'i') } },
+		  ]
+		})
+		users=users.filter((usr)=>usr.is_admin===false);
+		if(users.length===0){
+			return {
+				status:false,
+				msg:"No User Found!"
+			}
+		}
+		return {
+			status:true,
+			users,
+		}
+	} catch (error) {
+		return {
+			status:false,
+			msg:"No User Found!"
+		}
+	}
+}
+
+
+export async function searchTeams(searchTerm) {
+	try {
+		const teams = await Team.find({
+		    name: { $regex: new RegExp(searchTerm, 'i') }
+		}).populate("user_id");
+
+		if(teams.length===0) return { status:false, msg:"No Team Found!"}
+
+		return {
+			status:true,
+			teams,
+		}
+	} catch (error) {
+		return {
+			status:false,
+			msg:"No Team Found!"
+		}
+	}
+}
+
+
+export async function searchPlayers(searchTerm) {
+	try {
+		const players = await Player.find({
+		  $or: [
+		    { name: { $regex: new RegExp(searchTerm, 'i') } },
+		    { course: { $regex: new RegExp(searchTerm, 'i') } },
+		  ]
+		})
+
+		if(players.length===0) return { status:false,msg:"No Player Found!"}
+		return {status:true,players}
+
+	} catch (error) {
+		return { status:false,msg:"No Player Found!"}
+	}
+}

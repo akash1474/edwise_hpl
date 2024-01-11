@@ -27,7 +27,7 @@ const PlayerUpdatePage=async({searchParams})=>{
 
 	console.log(team.user_id);
 	console.log(session.user.id);
-	if(team.user_id!==session.user.id){
+	if(!session.user?.is_admin){
 		return <p className="text-5xl font-black w-full text-center my-20">Unauthorized player access!</p>
 	}
 	console.log(player);

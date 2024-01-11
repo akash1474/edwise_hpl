@@ -1,5 +1,5 @@
 import Rules from '@components/Rules'
-import { CreditCardIcon } from '@heroicons/react/24/outline'
+import { CreditCardIcon } from '@heroicons/react/outline'
 
 const LearnMore=()=>{
 	return(

@@ -13,11 +13,13 @@ const authOptions={
     async session({ session }) {
       await connectToDB();
       const sessionUser = await User.findOne({ email: session.user.email });
+      console.log(sessionUser);
       session.user.id = sessionUser._id.toString();
       session.user.payment=sessionUser.payment;
       session.user.receipt=sessionUser.receipt;
       session.user.verified=sessionUser.verified;
       session.user.has_type=sessionUser.has_type;
+      session.user.is_admin=sessionUser.is_admin;
       return session;
     },
     async signIn({ account, profile, user, credentials }) {
@@ -34,7 +36,8 @@ const authOptions={
             payment:false,
             receipt:"",
             verified:false,
-            has_type:false
+            has_type:false,
+            is_admin:false
           });
         }
 

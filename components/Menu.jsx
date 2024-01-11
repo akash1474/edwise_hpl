@@ -1,7 +1,7 @@
 "use client";
 import Link from 'next/link'
 import {useState,useRef,useEffect} from 'react';
-import {Bars3BottomRightIcon } from '@heroicons/react/24/outline'
+// import {Bars3BottomRightIcon } from '@heroicons/react/outline'
 
 function Menu({session}){
 
@@ -23,7 +23,7 @@ function Menu({session}){
 	return (
 		<>
 		<div onClick={()=>setShowMenu(true)} className="p-1 hidden rounded-md max-md:block hover:bg-slate-300 max-md:ml-5">
-			<Bars3BottomRightIcon className="w-6 h-6 min-h-6 min-w-6" />
+			{/*<Bars3BottomRightIcon className="w-6 h-6 min-h-6 min-w-6" />*/}
 		</div>
 		<div ref={elementRef} className={showMenu ? "menu bg-gray-800 rounded-sm absolute" : "menu-disable"}>
 			<svg onClick={(e)=>setShowMenu(false)} className="close-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

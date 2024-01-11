@@ -79,7 +79,7 @@ const FileUpload=({userData})=>{
 
 	return(
 		<>
-		  		<label className='w-full mb-6 text-4xl green_gradient font-black text-center'>₹200</label>
+		  	<label className='w-full mb-6 text-4xl green_gradient font-black text-center'>₹200</label>
 		    <div className="w-full mb-10 grid place-items-center">
 		    	<Image ref={imgRef} height={file ? 400 : 128} width={file ? 192  : 128} alt="qr_code_image" src="/assets/qr_code.svg"/>
 		    </div>

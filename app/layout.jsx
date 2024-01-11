@@ -5,7 +5,7 @@ import Provider from '@components/Provider';
 import {EdgeStoreProvider} from "@components/edgestore"
 import {Toaster} from 'react-hot-toast';
 import dynamic from 'next/dynamic'
-const ChatBot =dynamic(()=>import("@components/ChatBot"),{ssr:false});
+import ChatBot from "@components/ChatBot";
 
 import './globals.css'
 
@@ -50,8 +50,8 @@ export default function RootLayout({ children }) {
             <Footer/>
           </EdgeStoreProvider>
         </Provider>
+        <ChatBot/>
       </body>
-      <ChatBot/>
     </html>
   )
 }

@@ -27,6 +27,10 @@ const UserSchema = new Schema({
   has_type:{
     type:Boolean,
     default:false
+  },
+  is_admin:{
+    type:Boolean,
+    required:true
   }
 });
 
