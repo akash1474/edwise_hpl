@@ -15,11 +15,13 @@ import Step from '@components/Step'
 import frequentQuestions from '@utils/faqs.js';
 import Dialog from "@components/Dialog";
 
+
 export default async function Home() {
   const session=await getServerSession(authOptions);
   console.log(session);
   if(session?.user?.is_admin) redirect("/admin/dashboard");
   const targetDate = new Date('2024-01-14T23:59:59');
+
   return (
     <div className="w-full flex flex-col items-center relative">
       {/*<Dialog />*/}
