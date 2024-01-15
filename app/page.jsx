@@ -132,7 +132,7 @@ export default async function Home() {
       <section className="w-4/5 h-15 flex flex-row items-center justify-center py-10 max-md:flex-col max-sm:w-full">
         <div className="flex flex-row items-center border border-slate-400 rounded-sm px-10 max-md:flex-col max-md:border-none">
           <Image
-            src="/assets/contact.jpg"
+            src="/assets/contact.svg"
             height={256}
             width={256}
             className="max-sm:w-[192px] rounded-md max-md:order-1 mr-10 max-md:mr-0 max-md:mt-10"

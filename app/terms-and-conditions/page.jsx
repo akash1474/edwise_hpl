@@ -5,9 +5,9 @@ import Image from 'next/image';
 const PrivacyPolicy=()=>{
 	return(
 		<div className="h-min-[100vh] h-fit flex flex-col items-center">
-			<section className="w-4/5 max-sm:w-[calc(100%-50px)] py-7 px-5 my-10 border border-slate-300 rounded-md">
+			<section className="w-[600px] max-md:w-full max-sm:w-[calc(100%-50px)] py-7 px-5 my-10 border border-slate-300 rounded-md">
 				<span className="mb-20 text-lg font-semibold flex flex-col items-center">
-					<Image src="/assets/terms.jpg" height={300} width={300} alt="privacy_policy" className="" />
+					<Image src="/assets/terms.svg" height={300} width={300} alt="privacy_policy" className="" />
 					<p className="text-gray-900 font-black text-3xl text-center">Terms & Conditions</p>
 				</span>
 				<ul className="space-y-1 text-gray-600 text-base list-disc ml-5 flex flex-col gap-5">

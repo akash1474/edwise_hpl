@@ -5,7 +5,7 @@ import { CreditCardIcon } from '@heroicons/react/outline'
 const PrivacyPolicy=()=>{
 	return(
 		<div className="h-min-[100vh] h-fit flex flex-col items-center">
-			<section className="w-4/5 max-sm:w-[calc(100%-50px)] py-7 px-5 my-10 border border-slate-300 rounded-md">
+			<section className="w-[600px] max-md:w-full max-sm:w-[calc(100%-50px)] py-7 px-5 my-10 border border-slate-300 rounded-md">
 				<span className="mb-20 text-lg font-semibold flex flex-col items-center">
 					<Image src="/assets/policy_2.avif" height={300} width={300} alt="privacy_policy" className="" />
 					<p className="text-gray-900 font-black text-3xl text-center">Privacy Policy</p>
