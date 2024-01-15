@@ -30,7 +30,7 @@ export default async function Home() {
       }
 
 
-      <section className="w-4/5 h-15 flex flex-row items-center justify-center py-10 max-md:flex-col max-sm:w-full">
+      <section className="w-4/5 h-15 flex flex-row items-center justify-between py-10 max-md:flex-col max-sm:w-full">
         <div className="flex flex-col max-md:items-center max-md:order-2">
         {
           session?.user ?
@@ -38,7 +38,7 @@ export default async function Home() {
             <>
               <p className="mt-5 text-4xl font-extrabold max-md:text-center max-sm:text-3xl">Hello</p>
               <p className="text-4xl font-extrabold text-indigo-500 max-md:text-center">{session.user.name}</p>
-              <p className="text-slate-600 font-medium w-1/2 my-4 max-md:text-center max-sm:w-3/4">Get started with organizing your team by clicking on the get started button.</p>
+              <p className="text-slate-600 font-medium w-4/5 my-4 max-md:text-center max-sm:w-3/4">Get started with organizing your team by clicking on the get started button. You can get more info about the rules and payment procedure by pressing on the learn more button</p>
             </>
           )
           :
@@ -125,10 +125,32 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="w-4/5 h-15 flex flex-row items-center justify-center py-10 max-md:flex-col max-sm:w-full">
+{/*      <section className="w-4/5 h-15 flex flex-row items-center justify-center py-10 max-md:flex-col max-sm:w-full">
         <CountDownTimer targetDate={targetDate}/>
       </section>
-      
+*/}      
+      <section className="w-4/5 h-15 flex flex-row items-center justify-center py-10 max-md:flex-col max-sm:w-full">
+        <div className="flex flex-row items-center border border-slate-400 rounded-sm px-10 max-md:flex-col max-md:border-none">
+          <Image
+            src="/assets/contact.jpg"
+            height={256}
+            width={256}
+            className="max-sm:w-[192px] rounded-md max-md:order-1 mr-10 max-md:mr-0 max-md:mt-10"
+            alt="ContactUs"
+          />
+          <div className="flex flex-col max-md:items-center max-md:order-2">
+            <div className="text-3xl font-extrabold mb-5 max-sm:text-2xl max-md:w-full max-md:text-center max-sm:mt-2">
+              <p className="text-blue-400">Feel Free To Contact Us</p>
+              <p className="text-slate-700 mt-5 text-lg font-medium">
+              We're here to assist you. Whether you have questions about registrations, events, or general inquiries, our team is ready to help. Reach out to us for prompt assistance.
+              </p>
+            </div>
+            <Link href="/contact-us">
+              <p className="bg-blue-400 px-5 py-1.5 rounded-md w-fit max-sm:text-center text-white cursor-pointer hover:bg-blue-500 transition duration-150">ContactUs</p>
+            </Link>
+          </div>
+        </div>
+      </section>
 
       <section id="info" className="w-4/5 max-w-7xl  flex flex-col items-center justify-center py-10 mt-10 max-sm:w-full">
         <p className="text-5xl mb-5 font-extrabold max-md:text-4xl max-sm:text-3xl max-md:text-center">Team Registration Process</p>
@@ -185,7 +207,7 @@ export default async function Home() {
       </section>
       <section id="faq" className="w-4/5 max-sm:w-full py-24 px-6 max-w-[80rem] mx-auto">
         <div className="max-w-[56rem] mx-auto flex flex-col w-full">
-          <p className="text-3xl font-extrabold mb-8">Frequently Asked Questions</p> 
+          <p className="text-3xl font-extrabold mb-8 max-md:text-center">Frequently Asked Questions</p> 
           <div className="flex flex-col items-center">
             {
               frequentQuestions.map((data)=><FAQComponent key={data.question} data={data} />)

@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import { Switch } from '@headlessui/react'
 import Image from 'next/image';
+import Link from 'next/link';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -111,17 +112,17 @@ export default function ContactUs() {
             </div>
             <Switch.Label className="text-sm leading-6 text-gray-600">
               By selecting this, you agree to our{' '}
-              <a href="#" className="font-semibold text-indigo-600">
+              <Link href="/privacy-policy" className="font-semibold text-indigo-600 hover:underline">
                 privacy&nbsp;policy
-              </a>
+              </Link>
               .
             </Switch.Label>
           </Switch.Group>
         </div>
         <div className="mt-10">
           <button
-            type="submit"
-            className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            type={agreed ? "submit" : "button"}
+            className={`block w-full rounded-md ${agreed ? "bg-indigo-600" : "bg-indigo-300"} px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm ${agreed ? "hover:bg-indigo-600" : "cursor-not-allowed"} focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
           >
             Let's talk
           </button>

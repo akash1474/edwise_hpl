@@ -1,9 +1,13 @@
+import Image from 'next/image';
 
 const Rules=()=>{
 	const highlight="text-gray-900 font-medium";
 	return (
 		<section className="w-4/5 border border-slate-200 max-sm:w-[calc(100%-50px)] py-7 px-5 my-10">
-			<h2 className="mb-2 text-lg font-semibold text-gray-900">Rules:</h2>
+			<span className="mb-10 text-lg font-semibold flex flex-col items-center">
+				<Image src="/assets/rules.jpg" height={300} width={300} alt="rules" className="" />
+				<p className="text-gray-900 font-black text-3xl text-center">Rules and Regulations</p>
+			</span>
 			<ul className="space-y-1 text-gray-500 list-disc ml-5">
 				<li><span className={highlight}>Teams can be of 8, 10, or 13 members </span> — flexibility for squad size adds strategic depth to the game.</li>
 				<li><span className={highlight}>Engage in an intense 8 over battle </span> - where every ball counts towards victory.</li>

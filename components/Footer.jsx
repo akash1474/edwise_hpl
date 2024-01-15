@@ -15,11 +15,12 @@ const Footer =()=>{
 					</Link>
 				</section>
 			</section>
-			<section className="imp-links flex flex-col justify-between">
+			<section className="imp-links flex flex-col justify-between gap-2">
 				<p className="text-lg font-bold mb-4">Important Links</p>
-				<Link href="https://www.edwiseinternational.com/study-abroad-consultants/about.aspx" target="_blank" className="text-sm font-medium hover:text-slate-500 transition-colors duration-300 mb-2" >About Us</Link>
-				<Link href="/contact-us" className="text-sm font-medium hover:text-slate-500 transition-colors duration-300 mb-2" >Contact Us</Link>
-				<Link href="#tc" className="text-sm font-medium hover:text-slate-500 transition-colors duration-300" >Terms & Conditions</Link>
+				<Link href="https://www.edwiseinternational.com/study-abroad-consultants/about.aspx" target="_blank" className="text-sm font-medium hover:text-slate-400 hover:underline transition-colors duration-300" >About Us</Link>
+				<Link href="/contact-us" className="text-sm font-medium hover:text-slate-400 hover:underline transition-colors duration-300" >Contact Us</Link>
+				<Link href="/terms-and-conditions" className="text-sm font-medium hover:text-slate-400 hover:underline transition-colors duration-300" >Terms & Conditions</Link>
+				<Link href="/privacy-policy" className="text-sm font-medium hover:text-slate-400 hover:underline transition-colors duration-300" >Privacy Policy</Link>
 			</section>
 			<section className="flex-col">
 				<p className="text-lg font-bold mb-4">Social Links</p>

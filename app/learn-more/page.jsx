@@ -1,14 +1,14 @@
 import Rules from '@components/Rules'
-import { CreditCardIcon } from '@heroicons/react/outline'
+import Image from 'next/image'
 
 const LearnMore=()=>{
 	return(
 		<div className="flex flex-col items-center">
 			<Rules />
 			<section className="w-4/5 border border-slate-200 max-sm:w-[calc(100%-50px)] py-7 px-5 mb-10">
-				<span className="mb-2 text-lg font-semibold flex items-center">
-					{/*<CreditCardIcon className="text-black h-7 w-7 min-h-6 min-2-6 mr-2" />*/}
-					<p className="text-gray-900">Payment:</p>
+				<span className="mb-10 text-lg font-semibold flex flex-col items-center">
+					<Image src="/assets/payment.jpg" height={300} width={300} alt="playment" className="" />
+					<p className="text-gray-900 font-black text-3xl text-center">Payment</p>
 				</span>
 				<ul className="space-y-1 text-gray-600 text-base list-disc ml-5">
 				  <li>Registration requires a payment of Rs 200, ensuring commitment to the event.</li>
